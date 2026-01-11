@@ -54,7 +54,7 @@ blueprint:
         number:
           min: 0.0001
           max: 0.01
-          step: 0.0001
+#          step: 0.0001
     sun_elevation_limit:
       name: Sun elevation threshold (Soft Transit)
       description: Raise it to make the transition at sunset smoother.
