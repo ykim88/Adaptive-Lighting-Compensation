@@ -109,8 +109,8 @@ action:
                 {% set e = 2.71828 %}
                 {% set exponent = k_val * (lux - l_mid) %}
                 {% set denom = 1 + (e ** exponent) %}
-                {% set sigmoide = b_min_val + (100 - b_min_val) / denom %}
-                {{ [[sigmoide, 100]|min, b_min_val]|max | round(0) }}
+                {% set sigmoide = b_min_val + (b_max - b_min_val) / denom %}
+                {{ [[sigmoide, b_max]|min, b_min_val]|max | round(0) }}
           
           - if:
               - condition: template
@@ -128,4 +128,4 @@ action:
           - service: adaptive_lighting.change_switch_settings
             data:
               entity_id: !input adaptive_lighting_switch
-              use_defaults: [max_brightness]
+              use_defaults: "configuration"
